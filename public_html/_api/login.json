@@ -1,0 +1,14 @@
+{
+	"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJucm9jdGEiOiJzdGlobCIsImFjY2lvbmVzIjpbImNhbWJpbyIsImFsdGEiLCJjb25zdWx0YSJdLCJpYXQiOjE0NTg1OTY5OTQsImV4cCI6MTQ1ODY4MzM5NCwiaXNzIjoiU29mdGxhbmQifQ.9pXqucEdJkjG2ncrUpEksMW1SW3qjR8ZX6YJUC0V9GM",
+	"username": "stihl",
+	"empresa": {
+		"name": "STIHL MOTOIMPLEMENTOS S.A",
+		"logo": " "
+	},
+	"actions": [
+		"cambio",
+		"alta",
+		"consulta"
+	],
+	"lastLogin": null
+}

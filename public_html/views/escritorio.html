@@ -1,0 +1,175 @@
+<div ng-show="flash" class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span></button>
+	<span>{{ flash }}</span>
+</div>
+
+<div id="seguimiento-partes" class="panel panel-white">
+	<div class="panel-heading">
+		<span id="icono-seccion" class="menu-icon glyphicon glyphicon-home"></span>
+		<h4 class="panel-title">Seguimiento de Partes</h4>
+	</div> <!-- / .panel-heading -->
+
+	<div class="panel-body">
+		<nav>
+			<ul class="list-inline">
+				<li ng-show="escritorio.canIUse('alta')">
+					<a href="http://localhost:4200"
+						class="btn btn-success btn-addon m-b-sm btn-lg">
+						<i class="fa fa-pencil-square-o"></i> Crear nuevo Parte
+					</a>
+				</li>
+				<li>
+					<a href="#partes"
+						class="btn btn-success btn-addon m-b-sm btn-lg">
+						<i class="fa fa-search"></i> Ver todos los Partes
+					</a>
+				</li>
+			</ul>
+		</nav> <!-- / .list-inline -->
+
+		<div ng-show="!loaded">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<i class="fa fa-warning"></i> <strong>Cargando ...</strong>
+			</div>
+		</div>
+		<div ng-show="loaded">
+			<table
+				class="table table-striped responsive"
+				sar-responsive-table>
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Identificador</th>
+						<th style="min-width:210px;">Estado</th>
+						<th style="min-width:100px;">Incidente</th>
+						<th style="width:35%;">Descripción</th>
+						<th>&nbsp;</th>
+						<th>Fecha de liberación</th>
+						<!--<th>Acción</th>-->
+					</tr>
+				</thead>
+						<!-- ng-click="escritorio.abrirParte(parte)"> -->
+				<tbody>
+					<tr class="clickable-row"
+						ng-repeat="(key, parte) in partes"
+						ng-class="clickable-row"
+						sar-parte-link="{{ parte.codfor +'/'+ parte.nrofor }}"
+						>
+			  <td scope="row">
+	          	{{ parte.fecha }}
+	          </td>
+	          <td class="hidden-xs">
+	          	{{ parte.identificador }}
+	          </td>
+	          <td><sar-status data="{{ parte.estado }}" icono="{{ parte.estadoicono }}" color="{{ parte.estadocolor }}"></sar-status></td>
+						<td>{{ parte.incidente }}</td>
+						<td class="desc">
+							{{ parte.descripcion | limitTo:100 }}{{ parte.descripcion.length > 100 ? '...' : '' }}
+						</td>
+						<td align="center">
+							<sar-avatar user="{{ parte.ultimaactualizacion }}" />
+			  		</td>
+						<td>
+							<span title="{{ parte.FechaLiberaMotivo }}" tooltip>{{ parte.FechaLibera }}</span>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="7">
+							<p>Partes abiertos: <strong>({{ abiertos }})</strong> | Partes pendientes de accion: <strong>({{ pendientes }})</strong></p>
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+			<!-- / .table table-striped responsive -->
+		</div>
+
+	</div>
+	<!-- / .panel-body -->
+
+</div>
+<!-- / #seguimiento-partes -->
+
+<div id="intercambio-archivos" class="panel panel-white">
+	<div class="panel-heading">
+		<span id="icono-seccion" class="menu-icon glyphicon glyphicon-paperclip"></span>
+		<h4 class="panel-title"> Área de intercambio de archivos</h4>
+		<div class="panel-control">
+			<a href="javascript:void(0);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Expandir/Colapsar"
+				class="panel-collapse">
+					<i class="icon-arrow-down"></i>
+			</a>
+		</div>
+	</div>
+	<!-- / .panel-heading -->
+
+	<div id="alertContainer"></div>
+
+	<div class="panel-body">
+
+		<label class="btn btn-success btn-addon m-b-sm btn-lg" for="fileattach">
+			<i class="fa fa-upload"></i> Subir archivo
+			<input
+				id="fileattach"
+				name="fileattach[]"
+				fileread="attach.file"
+				type="file"
+				ng-hide="true"
+				multiple />
+		</label>
+
+		<button
+			type="button"
+			ng-disabled="attach.delete.length === 0"
+			ng-click="escritorio.deleteFiles()"
+			class="btn btn-success btn-addon m-b-sm btn-lg">
+				<i class="fa fa-trash"></i> Borrar
+		</button>
+
+		<!-- #upload -->
+
+		<div id="checkTree" class="jstree jstree-1 jstree-default jstree-checkbox-selection">
+			<ul class="jstree-container-ul jstree-children">
+				<li class="jstree-node  jstree-last jstree-open">
+					<i class="jstree-icon jstree-ocl"></i>
+					<i class="jstree-icon jstree-themeicon fa fa-folder icon-state-info icon-md jstree-themeicon-custom"></i> Mis documentos
+
+					<ul class="jstree-children" role="group">
+						<!-- <li ng-repeat="file in intercambioarchivos | orderBy:'name'" ng-init="$last ? escritorio.enabledLightbox() : null"> -->
+						<li
+							class="jstree-node  jstree-leaf"
+							ng-class="{'jstree-last':$last}"
+							ng-repeat="file in intercambioarchivos"
+							ng-init="$last ? escritorio.enabledLightbox() : null" class="tree-item">
+								<i class="jstree-icon jstree-ocl"></i>
+								<input type="checkbox" ng-model="attach.delete[$index]">
+								<sar-attachment-link link="file.url" class="jstree-anchor">
+									<i class="jstree-icon jstree-themeicon fa jstree-themeicon-custom"></i>
+									{{ file.name }}
+								<sar-filesize size="{{ file.size }}" /></sar-attachment-link>
+						</li>
+						<!--  -->
+						<li ng-repeat="file in attach.file" class="tree-item-add">
+							<i class="fa fa-paperclip"></i> {{ file.name }}
+							<progress
+								ng-model="fileAttachProgress[ file.progressId ]"
+								ng-show="fileAttachProgress[ file.progressId ] && fileAttachProgress[ file.progressId ] < 100"
+								value="{{ fileAttachProgress[ file.progressId ] }}"
+								min="0"
+								max="100" />
+						</progress>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+		<!-- / #checkTree -->
+	</div>
+	<!-- / .panel-body -->
+</div>
+<!-- #intercambio-archivos -->

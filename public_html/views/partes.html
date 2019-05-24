@@ -1,0 +1,75 @@
+
+<div id="inbox-partes" class="panel panel-white">
+	<div class="panel-heading">
+		<span id="icono-seccion" class="menu-icon glyphicon glyphicon-search"></span>
+		<h4 class="panel-title">Todos los Partes</h4>
+	</div>
+	<!-- / .panel-heading -->
+
+	<div class="panel-body">
+		<nav>
+			<ul class="list-inline">
+				<li><a href="#nuevo-parte" class="btn btn-success btn-addon m-b-sm btn-lg"><i class="fa fa-pencil-square-o"></i> Crear nuevo Parte</a></li>
+				<li class="filtro-por-estados">
+				<form action="#" class="select-cambio-estado">
+					<select class="form-control" id="filtro-estados" ng-model="estado" ng-options="v.ESTADO as v.LABEL for v in partes.listEstados">
+						<option value="">-- Filtrar por Estados --</option>
+					</select>
+				</form>
+				</li>
+			</ul>
+			<!-- / .ist-inline -->
+		</nav>
+		<!-- / nav -->
+
+		<div ng-show="!loaded">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<i class="fa fa-warning"></i> <strong>Cargando ...</strong>
+			</div>
+		</div>
+		<div ng-show="loaded">
+			<table id="partes"
+				datatable="ng"
+				dt-options="partes.dtOptions"
+				dt-column-defs="partes.dtColumnDefs"
+				dt-instance="partes.dtInstance"
+				class="table dataTable large-only table-striped"
+				style="width: 100%; cellspacing: 0;"
+				sar-responsive-table>
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Identificador</th>
+						<th>Estado</th>
+						<th style="min-width:100px;">Incidente</th>
+						<th style="width:35%;">Descripción</th>
+						<th>&nbsp;</th>
+						<th class="last-action" style="min-width:80px;">Fecha de liberación</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, parte) in sourceTable"
+	          ng-class="clickable-row"
+						sar-parte-link="{{ parte.codfor +'/'+ parte.nrofor }}"
+						>
+
+						<td><span ng-hide="true">{{ partes.formatDate(parte.fecha) }}</span>{{ parte.fecha }}</td>
+						<td>{{ parte.identificador }}</td>
+						<td><sar-status data="{{ parte.estado }}" icono="{{ parte.estadoicono }}" color="{{ parte.estadocolor }}"></sar-status></td>
+						<td>{{ parte.incidente }}</td>
+						<td class="desc">{{ parte.descripcion | limitTo:100 }}{{ parte.descripcion.length > 100 ? '...' : '' }}</td>
+						<td align="center">
+							<sar-avatar user="{{ parte.ultimaactualizacion }}" />
+						</td>
+						<td>
+							<span title="{{ parte.FechaLiberaMotivo }}" tooltip>{{ parte.FechaLibera }}</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- / #partes -->
+	</div>
+	<!-- / .panel-body -->
+</div>
+<!-- / #inbox-partes -->

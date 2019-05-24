@@ -1,0 +1,22 @@
+[
+    {
+        "CODIGO": "NL",
+        "DESCRP": "Nueva licencia"
+    },
+    {
+        "CODIGO": "CS",
+        "DESCRP": "Cambio de servidor"
+    },
+    {
+        "CODIGO": "VN",
+        "DESCRP": "Vencimiento"
+    },
+    {
+        "CODIGO": "CE",
+        "DESCRP": "Cambio de entorno"
+    },
+    {
+        "CODIGO": "NO",
+        "DESCRP": "Novedades"
+    }
+]

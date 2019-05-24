@@ -1,0 +1,78 @@
+//server.js
+'use strict';
+
+var express    = require('express');
+var app        = express();
+var mongoose   = require('mongoose');
+
+// Conexión con la base de datos
+// mongoose.connect('mongodb://localhost:27017/softland-tares');
+
+// Configuración
+// var myLogger = function (req, res, next) {
+//   console.log('LOGGED');
+//   next();
+// };
+// Localización de los ficheros estáticos
+app.use(express.static(__dirname + '/public_html'));
+app.use('/static', express.static(__dirname + '/public_html'));
+app.use('/assets', express.static(__dirname + '/public_html/assets'));
+// Muestra un log de todos los request en la consola
+// app.use(myLogger);
+// Permite cambiar el HTML con el método POST
+// app.use(express.bodyParser());
+
+// Definición de modelos
+// var Todo = mongoose.model('Tarea', {
+//     codigo: String,
+//     asunto: String,
+// 	leido: Boolean,
+// 	fcreacion: Date,
+// 	festimada: Date,
+// 	fcierre: Date
+// });
+
+// Rutas de nuestro API
+// GET de tareas los TODOs
+app.get('/api/:code', function(req, res) {
+    res.sendFile('./public_html/api/'+ req.params.code +'.json');
+    // Tarea.find(function(err, tareas) {
+    //     if(err) {
+    //         res.send(err);
+    //     }
+    //     res.json(tareas);
+    // });
+});
+app.post('/api/nuevo-parte', function(req, res) {
+	var response = {
+		code: 200,
+		message: 'Ticket guardado'
+	};
+	res.json(response);
+});
+
+app.get('/views/:page', function(req, res) {
+    res.sendFile('./public_html/views/'+ req.params.page +'.html');
+});
+
+// Carga una vista HTML simple donde irá nuestra Single App Page
+// Angular Manejará el Frontend
+app.get('/login', function(req, res) {
+    res.sendFile(__dirname + '/public_html/login.html');
+});
+
+// app.get('/', function(req, res) {
+//     res.redirect('/login');
+// });
+
+app.get('/*', function(req, res) {
+    // res.redirect('/login');
+    res.sendFile(__dirname + '/public_html/index.html');
+});
+
+// Escucha en el puerto 8080 y corre el server
+app.listen(8080, function() {
+    console.log('App listening on port 8080');
+});
+
+// res.status(404).send('Sorry, we cannot find that!');

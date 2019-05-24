@@ -1,0 +1,51 @@
+parte_reducido = {
+    codfor: string,
+    nrofor: number,
+    estado: string,
+    fechaAlta: string,
+    fechaEstEntrega: string
+}
+
+parteAlta = {
+    version: string,
+    descripcion: string,
+    files: string[]
+}
+
+parte = {
+    codfor: string,
+    nrofor: number,
+    fechaAlta: string,
+    fechaEstEntrega: string
+    historia = [
+        {
+            fechaMov: date,
+            responsable: string,
+            estad: string,
+            descripcion: string
+        }
+    ]
+}
+
+empresa = {
+    nombre: string,
+    web: string,
+    mail: string,
+    telefono: string
+    contactos = [
+        {
+            nombre:string,
+            cargo:string,
+            mail:string,
+            telefono:string
+        }
+        //ABM
+    ]
+}
+
+habilitacion = {
+    sucursal:string,
+    tipo:string,
+    novedad:string,
+    observaciones:string
+}

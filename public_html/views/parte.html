@@ -1,0 +1,171 @@
+<div id="cambio-estado" class="panel panel-white">
+	<div class="panel-heading">
+		<a href="javascript:void(0);" ng-click="back()">
+			<span id="icono-seccion" class="menu-icon glyphicon glyphicon-arrow-left"><span class="ayuda-accion">Volver</span></span>
+		</a>
+		<h4 class="panel-title">Parte: <span>{{ data.codfor }} {{ data.nrofor }}</span>
+		| <span>{{ data.desest }}</span>
+		</h4>
+	</div>
+
+	<div class="panel-body">
+
+		<div id="warningContainer"></div>
+
+		<table id="detalleParte" class="table table-striped" ng-show="data.historial.length">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Fecha</th>
+					<th style="width:50%;">Descripción</th>
+					<th style="text-align:center;">Última actualización</th>
+				</tr>
+			</thead>
+
+			<tbody ng-repeat="(key, historia) in data.historial">
+				<tr ng-class="'row-collapse' + (key ? ' collapsed' : '')" data-toggle="collapse" ng-href="#{{ 'collapse' + key }}" aria-expanded="{{ !key ? 'true' : 'false' }}">
+					<td class="accordion-toggle"></td>
+					<td scope="row">{{ historia.fecha }}</td>
+					<td>{{ historia.observaciones | limitTo:100 }}{{ historia.observaciones.length > 100 ? '...' : '' }}</td>
+					<td align="center">
+	          <sar-avatar user="{{ historia.userUltAct }}" />
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="4" id="collapse-cell">
+						<div id="{{ 'collapse' + key }}" ng-class="!key ? 'collapse in' : 'collapse'">
+							<div class="panel-body-accordion">
+								<div class="message-sender" ng-class="historia.userUltAct === 'Cliente' ? 'cliente' : 'soporte'">
+									<span ng-class="'label label-' + (historia.userUltAct === 'Cliente' ? 'info' : 'primary' )">{{ historia.userUltAct }}</span>
+								</div>
+								<!-- / .message-sender -->
+
+								<div class="message-content" ng-class="historia.userUltAct === 'Cliente' ? 'cliente' : 'soporte'">
+									<p class="history-container">{{ historia.observaciones }}</p>
+								</div>
+								<!-- / .message-content -->
+
+								<sar-attachment files="historia.adjuntos"></sar-attachment>
+								<!-- / .message-attachments -->
+
+								<div id="alertContainer"></div>
+
+								<div ng-show="$index === 0" id="actions">
+									<nav ng-show="canIUse('cambio')">
+										<ul class="list-inline">
+											<li ng-repeat="action in data.actions">
+												<button
+													type="button"
+													class="btn btn-success btn-addon m-b-sm btn-lg"
+													style="{{ action.color }}"
+													ng-disabled="ticket.estnew && ticket.estnew !== action.CODIGO"
+													ng-click="parte.collapse(action)">
+													<i ng-class="action.icon"></i>
+														{{ action.DESCRP }}
+												</button>
+											</li>
+										</ul>
+									</nav>
+
+									<form method="post" id="formSendTicket" name="formSendTicket" ng-submit="sendTicket()" class="form-horizontal" novalidate>
+										<div id="response" class="collapse">
+											<div class="form-group">
+												<div class="col-md-12 col-sm-12">
+													<textarea
+														name="description"
+														id="ticket-answer-textarea"
+														rows="8"
+														class="form-control"
+														ng-class="{ 'has-error': formSendTicket.description.$invalid && formSendTicket.description.$dirty }"
+														placeholder="Escribir una respuesta"
+														ng-model="ticket.description"
+														required></textarea>
+<!-- 													<div ng-if="formSendTicket.description.$dirty" ng-messages="formSendTicket.description.$error" role="alert">
+														<label ng-show="formSendTicket.description.$error.required" class="error">Este campo es obligatorio.</label>
+													</div> -->
+												</div>
+
+												<div class="col-sm-12" ng-show="showratio">
+													<label for="ratio">Por favor haga clic para calificar el servicio de <strong>Soporte</strong> recibido:</label>
+													<input name="ratio" id="valoracion" class="rating rating-loading" ng-model="ticket.ratio" data-min="0" data-max="5" data-step="1" data-size="xs">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-12">
+
+													<label class="btn btn-success btn-addon m-b-sm btn-lg" for="fileattach">
+														<i class="fa fa-paperclip"></i> Adjuntar archivos
+														<input
+															id="fileattach"
+															name="fileattach[]"
+															fileread="attach.file"
+															type="file"
+															ng-hide="true"
+															multiple />
+													</label>
+
+													<button
+														type="submit"
+														ng-disabled="!formSendTicket.$valid"
+														id="btn-submit-ticket"
+														class="btn btn-success btn-addon m-b-sm btn-lg pull-right">
+														<i class="fa fa-check"></i> Enviar
+													</button>
+
+												</div>
+											</div>
+
+											<div id="attachCollapse">
+												<div class="message-attachments" ng-show="attach.file.length">
+													<h4>Archivos Adjuntos ({{ attach.file.length }}):</h4>
+													<div class="message-attachment" ng-repeat="file in attach.file">
+														<div class="attachment-info">
+															<p>
+																<i class="fa fa-paperclip m-r-xs"></i> {{ file.name }} <br>
+																<sar-filesize size="{{ file.size }}"></sar-filesize>
+															</p>
+															<p ng-show="canDeleteFile">
+																<button type="button" class="attachDelete" ng-click="deleteAttach($index)">
+																	<i class="fa fa-close"></i> Eliminar
+																</button>
+															</p>
+															<progress
+																ng-model="fileAttachProgress[ file.progressId ]"
+																ng-show="fileAttachProgress[ file.progressId ]"
+																value="{{ fileAttachProgress[ file.progressId ] }}"
+																min="0"
+																max="100" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+
+							</div>
+							<!-- / .panel-body-accordion -->
+						</div>
+						<!-- / #collapse + key -->
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+				<th colspan="4"></th>
+				</tr>
+			</tfoot>
+		</table>
+		<!-- / table -->
+
+		<nav>
+			<ul class="list-inline">
+				<li><a href="#partes" class="btn btn-success btn-addon m-b-sm btn-lg">
+					<i class="fa fa-search"></i> Ver todos los Partes</a>
+				</li>
+			</ul>
+		</nav>
+
+	</div>
+</div>

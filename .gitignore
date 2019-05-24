@@ -1,0 +1,27 @@
+!.gitignore
+
+.config.js
+
+### Theme original files
+/dashboard-template
+
+### Ignore Bower and NPM files
+/bower_components
+/node_modules
+
+### Ignore files MacOSX
+.DS_Store
+._*
+.Trashes
+
+### Ignore files sublimetext
+/*.sublime-project
+*.sublime-workspace
+
+Thumbs.db
+
+### Log files
+*.log
+error_log
+access_log
+.sass-cache

@@ -1,0 +1,27 @@
+[
+	[
+		{
+			"id": 1,
+			"nombre": "XX",
+			"email": "usuario1@company.com",
+			"tipos": {
+				"licencias": {
+					"editable": false,
+					"valor": true
+				},
+				"contable": {
+					"editable": false,
+					"valor": true
+				},
+				"otrasnotificaciones": {
+					"editable": false,
+					"valor": false
+				},
+				"otrasalertas": {
+					"editable": false,
+					"valor": true
+				}
+			}
+		}
+	]
+]

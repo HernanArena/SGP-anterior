@@ -1,0 +1,32 @@
+[
+	{
+		"fecha": "14/12/2015",
+		"observaciones": "10/09/2015 11:09:23 Softland : Estimado, no hay una forma estándar para calcular lo indicado pero pueden hacer un script que cuenta la cantidad de lineas que soporta el reporte dividido la cantidad de items del formulario entonces podes obtener cuantos transportes u hojas vas a utilizar. \r\nEl transporte lo pueden tomar de ejemplo del reporte CJ - Formulario de tesorería en los estratos \"Transporte\" del formato del mismo.\r\nSaludos cordiales.\r\n----------------------------------------\r\nDe: <cristian.jung@stihl.com.ar>\r\nFecha: 11 de diciembre de 2015, 14:34\r\nAsunto: RE: AM|440|005CLI|Solicitud de aclaraciones al cliente\r\nPara: soportear@softland.com.ar\r\n\r\nSeguí el ejemplo del reporte “CJ - Formulario de tesorería”  y agregué el campo en la sección “Transporte” del reporte. Pero el reporte no muestra el campo.\r\nEj. FCAELC 32714.\r\nSaludos.\r\n-------------------------------------\r\n14/12/2015 09:43:29 Softland : Estimados, para un mejor asesoramiento podemos derivarlo con un consultor para que pueda atender el diseño del reporte USR que está queriendo crear o bien tomar el curso Generador de Reportes poniendose en contacto con su lider de cuenta.\r\nSaludos cordiales.\r\n---------------------------------------------------------------\r\nDe: <cristian.jung@stihl.com.ar>\r\nFecha: 14 de diciembre de 2015, 10:06\r\nAsunto: RE: AM|440|005CLI|Solicitud de aclaraciones al cliente\r\nPara: soportear@softland.com.ar\r\n\r\nPor favor derivarme con un consultor.\r\n \r\nSaludos.\r\nCristian M. Jung\r\n---------------------------------------------------\r\n14/12/2015 15:44:07 Softland : Estimados, se derivará a su lider de cuenta Federico de Salas. \r\nSaludos cordiales.",
+		"area": "Soporte",
+		"adjuntos": ""
+	},
+	{
+		"fecha": "14/12/2015",
+		"observaciones": "10/09/2015 11:09:23 Softland : Estimado, no hay una forma estándar para calcular lo indicado pero pueden hacer un script que cuenta la cantidad de lineas que soporta el reporte dividido la cantidad de items del formulario entonces podes obtener cuantos transportes u hojas vas a utilizar. \r\nEl transporte lo pueden tomar de ejemplo del reporte CJ - Formulario de tesorería en los estratos \"Transporte\" del formato del mismo.\r\nSaludos cordiales.\r\n----------------------------------------\r\nDe: <cristian.jung@stihl.com.ar>\r\nFecha: 11 de diciembre de 2015, 14:34\r\nAsunto: RE: AM|440|005CLI|Solicitud de aclaraciones al cliente\r\nPara: soportear@softland.com.ar\r\n\r\nSeguí el ejemplo del reporte “CJ - Formulario de tesorería”  y agregué el campo en la sección “Transporte” del reporte. Pero el reporte no muestra el campo.\r\nEj. FCAELC 32714.\r\nSaludos.\r\n-------------------------------------\r\n14/12/2015 09:43:29 Softland : Estimados, para un mejor asesoramiento podemos derivarlo con un consultor para que pueda atender el diseño del reporte USR que está queriendo crear o bien tomar el curso Generador de Reportes poniendose en contacto con su lider de cuenta.\r\nSaludos cordiales.\r\n---------------------------------------------------------------\r\nDe: <cristian.jung@stihl.com.ar>\r\nFecha: 14 de diciembre de 2015, 10:06\r\nAsunto: RE: AM|440|005CLI|Solicitud de aclaraciones al cliente\r\nPara: soportear@softland.com.ar\r\n\r\nPor favor derivarme con un consultor.\r\n \r\nSaludos.\r\nCristian M. Jung",
+		"area": "Soporte",
+		"adjuntos": ""
+	},
+	{
+		"fecha": "14/12/2015",
+		"observaciones": "10/09/2015 11:09:23 Softland : Estimado, no hay una forma estándar para calcular lo indicado pero pueden hacer un script que cuenta la cantidad de lineas que soporta el reporte dividido la cantidad de items del formulario entonces podes obtener cuantos transportes u hojas vas a utilizar. \r\nEl transporte lo pueden tomar de ejemplo del reporte CJ - Formulario de tesorería en los estratos \"Transporte\" del formato del mismo.\r\nSaludos cordiales.\r\n----------------------------------------\r\nDe: <cristian.jung@stihl.com.ar>\r\nFecha: 11 de diciembre de 2015, 14:34\r\nAsunto: RE: AM|440|005CLI|Solicitud de aclaraciones al cliente\r\nPara: soportear@softland.com.ar\r\n\r\nSeguí el ejemplo del reporte “CJ - Formulario de tesorería”  y agregué el campo en la sección “Transporte” del reporte. Pero el reporte no muestra el campo.\r\nEj. FCAELC 32714.\r\nSaludos.\r\n-------------------------------------\r\n14/12/2015 09:43:29 Softland : Estimados, para un mejor asesoramiento podemos derivarlo con un consultor para que pueda atender el diseño del reporte USR que está queriendo crear o bien tomar el curso Generador de Reportes poniendose en contacto con su lider de cuenta.\r\nSaludos cordiales.",
+		"area": "Soporte",
+		"adjuntos": ""
+	},
+	{
+		"fecha": "10/09/2015",
+		"observaciones": "10/09/2015 11:09:23 Softland : Estimado, no hay una forma estándar para calcular lo indicado pero pueden hacer un script que cuenta la cantidad de lineas que soporta el reporte dividido la cantidad de items del formulario entonces podes obtener cuantos transportes u hojas vas a utilizar. \r\nEl transporte lo pueden tomar de ejemplo del reporte CJ - Formulario de tesorería en los estratos \"Transporte\" del formato del mismo.\r\nSaludos cordiales.",
+		"area": "Soporte",
+		"adjuntos": ""
+	},
+	{
+		"fecha": "09/09/2015",
+		"observaciones": null,
+		"area": "Soporte",
+		"adjuntos": ""
+	}
+]

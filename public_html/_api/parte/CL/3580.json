@@ -1,0 +1,20 @@
+{
+    "codfor": "CL",
+    "nrofor": 3580,
+    "nrocta": "STIHL",
+    "nombre": "STIHL MOTOIMPLEMENTOS S.A",
+    "fchmov": "09/28/2010",
+    "userUltAct": "Servicio al Cliente (Federico de Salas)",
+    "estado": "005CLI",
+    "desest": "Esperando Accion del Cliente",
+    "versio": "2309",
+    "incide": "C",
+    "tincid": "Consulta",
+    "fchent": null,
+    "stfche": "No Aplica",
+    "resges": "CLIENTE",
+    "obscli": "28/09/2010 12:22:51 Estimado Cliente.\r\nQue versión del sistema tienen implementada? Y decimales en el precio se refiere? Aguardo su respuesta.- ",
+    "desfun": "Aplicación Registración NVENTA (001000-00100), registración PLIST (002000-001000)\r\n\r\nPregunta\r\n\tLos campos _PCTBF? tienen más decimales que antes y ocupan mucho espacio en la pantalla. ¿Se puede reducir la visión a dos decimales?",
+    "observ": "28/09/2010 12:22:51 ECORON : Estimado Cliente.\r\nQue versión del sistema tienen implementada? Y decimales en el precio se refiere? Aguardo su respuesta.-",
+    "epcndi": null
+}

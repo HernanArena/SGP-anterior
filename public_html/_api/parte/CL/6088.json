@@ -1,0 +1,24 @@
+[
+    [
+        {
+            "codfor": "CL",
+            "nrofor": 6088,
+            "nrocta": "STIHL",
+            "nombre": "STIHL MOTOIMPLEMENTOS S.A",
+            "fchmov": "01/06/2016",
+            "userUltAct": "Cliente",
+            "estado": "005CLI",
+            "desest": "Esperando Accion del Cliente",
+            "versio": "3104",
+            "incide": "E",
+            "tincid": "No Conformidad",
+            "fchent": null,
+            "stfche": "Sin confirmar",
+            "resges": "CLIENTE",
+            "obscli": "22/01/2016 09:32:36 Softland : Buen dia estimado,\r\n\r\nPodria pasarnos los datos de conexion el dia lunes a las 10hs?\r\n\r\nAguardamos comentarios,\r\nSaludos cordiales. \r\n\r\n",
+            "desfun": "Aplicación factura electrónica\n\nProblema\n\tNo podemos informar el comprobante NDAELC 9527.  Error del webservice: Fallada\tAUTORIZANDO: NDAELC - 9527\tEl WS informó: . El campo  'Importe Total' ImpTotal, debe ser igual  a la  suma de ImpTotConc + ImpNeto + ImpOpEx + I.",
+            "observ": "",
+            "epcndi": null
+        }
+    ]
+]

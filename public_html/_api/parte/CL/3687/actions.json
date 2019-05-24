@@ -1,0 +1,17 @@
+[
+    {
+        "CODIGO": "000",
+        "DESCRP": "Responder"
+    },
+    {
+        "estadoColor": "#22BAA0",
+        "CODIGO": "001",
+        "DESCRP": "Pausar"
+    },
+    {
+        "estadoIcono": "close",
+        "estadoColor": "#ff0000",
+        "CODIGO": "002",
+        "DESCRP": "Cerrar"
+    }
+]

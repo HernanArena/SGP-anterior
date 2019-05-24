@@ -1,0 +1,78 @@
+<div id="contactos" class="panel panel-white">
+
+	<div class="panel-heading">
+		<span id="icono-seccion" class="menu-icon glyphicon glyphicon-user"></span>
+		<h4 class="panel-title">Administración de Contactos</h4>
+	</div>
+
+	<div class="panel-body">
+		<div class="contacts-widget">
+			<table id="user-notification" class="table table-hover table-condensed responsive" sar-responsive-table>
+				<thead>
+					<tr>
+						<th style="width: 25%;">Nombre de Usuario</th>
+						<th ng-repeat="(key, value) in tipos" ng-style="{ width: value.widht }">{{ value.label }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="contacto in listacontactos">
+						<td>
+							<div class="inbox-item">
+								<div class="inbox-item-img"><img src="assets/images/avatar2.png" class="img-circle" alt=""></div>
+								<p class="inbox-item-author">{{ contacto.NOMBRE }}</p>
+								<p class="inbox-item-text"><a ng-href="mailto:{{ contacto.email }}">{{ contacto.MAIL }}</a></p>
+							</div>
+						</td>
+						<td class="vcenter" ng-repeat="(tipokey, value) in tipos">
+							<div ng-class="{checker: true, disabled: true }">
+								<span ng-class="{checked: true}">
+									<input
+										type="checkbox"
+										id="{{ tipokey }}"
+										name="{{ tipokey }}"
+										ng-model="valores[contacto.id][tipokey]"
+										ng-disabled="true"
+										ng-value="$index"
+									/>
+								</span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- / .contacts-widget -->
+		<br />
+		<div id="alertContainer"></div>
+
+<!-- 		<button
+			type="button"
+			ng-click="contactos.actualizar()"
+			class="btn btn-success btn-addon m-b-sm btn-lg"
+		>
+			<i class="fa fa-refresh"></i> Actualizar datos
+		</button> -->
+	</div>
+	<!-- / .panel-body -->
+
+
+<!-- 	<div class="panel panel-white">
+		<div id="info-empresa" class="panel-heading">
+			<span id="icono-seccion" class="menu-icon glyphicon glyphicon-exclamation-sign"></span>
+			<h4 class="panel-title">Información</h4>
+		</div>
+
+		<div class="panel-body" style="margin-bottom:0 !important;">
+			<h4>Razón social de la empresa</h4>
+			<p>Metamorfosys S.R.L.</p>
+			<hr />
+			<h4>Datos de la empresa;</h4>
+			<p><strong>Email:</strong> <a href="mailtp:info@metamorfosys.com.ar">info@metamorfosys.com.ar</a></p>
+			<p><strong>Sitio Web:</strong> <a href="http://www.metamorfosys.com.ar">www.metamorfosys.com.ar</a></p>
+			<p><strong>Teléfono:</strong> <a href="tel:11647917327">011 47017327</a></p>
+			<hr />
+		</div>
+	</div> -->
+	<!-- / .panel-white -->
+</div>
+<!-- / #contactos -->

@@ -1,0 +1,20 @@
+{
+    "codfor": "AM",
+    "nrofor": 440,
+    "nrocta": "STIHL",
+    "nombre": "STIHL MOTOIMPLEMENTOS S.A",
+    "fchmov": "09/09/2015",
+    "userUltAct": "Soporte (Alan Mansilla)",
+    "estado": "000",
+    "desest": "Factibilidad / Elaboracion de Alcance",
+    "versio": "3103",
+    "incide": "C",
+    "tincid": "Consulta",
+    "fchent": null,
+    "stfche": "No Aplica",
+    "resges": "SOFTLAND (SAC)",
+    "obscli": ".",
+    "desfun": "De: <cristian.jung@stihl.com.ar>\r\nFecha: 9 de septiembre de 2015, 9:23\r\nAsunto: numeración de páginas y subtotales en formularios de facturas, notas de débito y notas de crédito\r\nPara: soportear@softland.com.ar\r\n\r\n\r\nEn la impresión de las facturas, notas de débito y crédito es obligación imprimir el nro. de hoja (Hoja 1 de XX, Hoja 2 de XX, etc.) y el transporte del importe de hoja a hoja.\r\n¿Me mandan un ejemplo de cómo hacerlo en un formulario?\r\nSaludos.",
+    "observ": "14/12/2015 15:44:45 FM : Federico, según lo hablado te derivo el parte. Gracias\r\nSaludos.",
+    "epcndi": null
+}

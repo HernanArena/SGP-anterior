@@ -1,0 +1,30 @@
+JSON
+
+[15/03/16 11:38:47] Gaby Trunso: GET http://sarspweb:3030/login
+[15/03/16 11:39:26] Gaby Trunso: headers = [ uid , pwd ]
+[15/03/16 11:40:20] Gaby Trunso: http://sarspweb:3030/api/ <-- aca empieza el api
+[15/03/16 11:40:39] Gaby Trunso: todas las rutas del api necesitan un header con el token
+[15/03/16 11:41:03] Gaby Trunso: el header name para el token es "x-access-token"
+[15/03/16 11:41:45] Gaby Trunso: GET partes/ <-- todos los partes del usuario logueado
+[15/03/16 11:42:21] Gaby Trunso: GET parte/xxx/yyy <--- datos de un parte especifico
+[15/03/16 11:43:30] Gaby Trunso: POST parte/xxx/yyy/ <--- cambio de estado de un parte requiere de un body con json
+[15/03/16 11:44:28] Gaby Trunso: {
+ "obscli" : "Observación del cliente"
+}
+[15/03/16 11:44:59] Gaby Trunso: POST partes/ <--- carga de nuevo parte
+[15/03/16 11:45:08] Gaby Trunso: un body con json
+[15/03/16 11:45:44] Gaby Trunso: que incluya un objeto llamado parte y q contenga todos los campos necesarios
+[15/03/16 11:45:50] Gaby Trunso: ejemplo
+[15/03/16 11:46:01] Gaby Trunso: {
+    "parte": {
+        "version": "340",
+        "descripcion": "ESTE ES UN PARTE NUEVO",
+        "files": [
+            "sta.log",
+            "cwaConfig.log"
+        ]
+    }
+}
+[15/03/16 11:46:27] Gaby Trunso: es un ejemplo viejo para que tengan una idea
+[15/03/16 11:46:55] Gaby Trunso: la versión actual creo que requiere un campo mas
+[15/03/16 11:47:20] Gaby Trunso: files es un array con los paths a los archivos no es solo el nombre del archivo

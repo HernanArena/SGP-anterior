@@ -1,0 +1,132 @@
+
+<div id="nuevo-parte" class="panel panel-white">
+	<div class="panel-heading">
+		<span id="icono-seccion" class="menu-icon glyphicon glyphicon-edit"></span>
+		<h4 class="panel-title">Nuevo Parte</h4>
+	</div>
+
+	<div class="panel-body" style="margin-bottom:0 !important;">
+
+		<div id="alertContainer">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>IMPORTANTE:</strong> Si usted ya ha creado un Parte por la consulta que desea reportar, le sugerimos aguardar respuesta del equipo de Soporte o Responder la cadena de mensajes asociada al Parte que ya ha abierto.
+			</div>
+		</div>
+
+		<form
+			id="formNewTicket"
+			name="formNewTicket"
+			class="form-horizontal"
+			ng-submit="partes.submit()"
+			enctype="multipart/form-data"
+			novalidate>
+
+			<div class="form-group">
+				<div class="col-md-12 col-sm-12">
+					<textarea
+						rows="8"
+						class="form-control"
+						placeholder="Descripcion del incidente/inquietud"
+						name="description"
+						ng-model="ticket.description"
+						ng-class="{ 'has-error': formNewTicket.description.$invalid && formNewTicket.description.$dirty }"
+						required></textarea>
+					<!--  -->
+<!-- 					<div ng-if="formNewTicket.description.$dirty" ng-messages="formNewTicket.description.$error" role="alert">
+						<label ng-show="formNewTicket.description.$error.required" class="error">Este campo es obligatorio.</label>
+					</div> -->
+					<!--  -->
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-6">
+					<select class="form-control m-b-sm"
+						ng-class="{ 'has-error': formNewTicket.version.$invalid && formNewTicket.version.$dirty }"
+						ng-model="ticket.version"
+						ng-options="v.CODIGO as v.DESCRP for v in versions"
+						name="version"
+						required>
+						<option value="">Seleccione versión…</option>
+					</select>
+					<!--  -->
+<!-- 					<div ng-show="formNewTicket.$submitted || formNewTicket.version.$touched" role="alert">
+						<label ng-show="formNewTicket.version.$error.required" class="error">Seleccione una opción.</label>
+					</div> -->
+					<!--  -->
+				</div>
+				<div class="col-sm-6">
+					<select class="form-control m-b-sm"
+						ng-class="{ 'has-error': formNewTicket.contact.$invalid && formNewTicket.contact.$dirty }"
+						ng-model="ticket.contact"
+						ng-options="c.NOMBRE as (c.NOMBRE+' ('+c.MAIL+')') for c in contacts"
+						name="contact"
+						required>
+						<option value="">Seleccione contacto…</option>
+					</select>
+					<!--  -->
+<!-- 					<div ng-show="formNewTicket.$submitted || formNewTicket.contact.$touched" role="alert">
+						<label ng-show="formNewTicket.contact.$error.required" class="error">Seleccione una opción.</label>
+					</div> -->
+					<!--  -->
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<label class="btn btn-success btn-addon m-b-sm btn-lg" for="fileattach">
+						<i class="fa fa-paperclip"></i> Adjuntar archivos
+						<input
+							id="fileattach"
+							name="fileattach[]"
+							fileread="attach.file"
+							type="file"
+							ng-hide="true"
+							multiple />
+					</label>
+
+					<button type="submit" id="btn-submit-ticket" ng-disabled="!isValid" class="btn btn-success btn-addon m-b-sm btn-lg pull-right">
+						<i class="fa fa-check"></i> Enviar Parte
+					</button>
+				</div>
+				<!-- / .col-sm-12 -->
+			</div>
+			<!-- / .form-group -->
+
+			<div id="attachCollapse">
+
+				<div class="message-attachments" ng-show="attach.file.length">
+					<h4>Archivos Adjuntos ({{ attach.file.length }}):</h4>
+					<div class="message-attachment" ng-repeat="file in attach.file">
+						<div class="attachment-info">
+							<p>
+								<i class="fa fa-paperclip m-r-xs"></i> {{ file.name }} <br>
+								<sar-filesize size="{{ file.size }}"></sar-filesize>
+							</p>
+							<p ng-show="canDeleteFile">
+								<button type="button" class="attachDelete" ng-click="deleteAttach($index)">
+									<i class="fa fa-close"></i> Eliminar
+								</button>
+							</p>
+
+							<progress
+								ng-model="fileAttachProgress[ file.progressId ]"
+								ng-show="fileAttachProgress[ file.progressId ]"
+								value="{{ fileAttachProgress[ file.progressId ] }}"
+								min="0"
+								max="100" />
+						</div>
+					</div>
+				</div>
+				<!--  -->
+			</div>
+			<!-- attach -->
+		</form>
+		<!-- / #submit-new-ticket -->
+	</div>
+	<!-- / .panel-body -->
+
+</div>
+<!-- / #nuevo-parte -->
+

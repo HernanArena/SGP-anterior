@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html ng-app="sarApp">
+	<head>
+
+		<!-- <base href="/v2"> -->
+		<!-- Title -->
+		<title>Softland | Extranet - Servicios al Cliente</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Softland, Extranet de servicios al cliente." />
+		<meta name="keywords" content="softalnd, soporte" />
+		<meta name="author" content="Softland" />
+
+		<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+
+		<!-- font -->
+		<!-- <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
+
+		<!-- Styles -->
+		<link href="assets/css/assets.css" rel="stylesheet" type="text/css"/>
+		<link href="assets/plugins/jstree/themes/default/style.min.css" rel="stylesheet" type="text/css"/>
+		<link href="assets/plugins/dropzone/dropzone.min.css" rel="stylesheet" type="text/css"/>
+		<link href="assets/css/sar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>
+
+		<script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
+		<script src="assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Javascripts -->
+		<script src="config.js"></script>
+		<script src="assets/js/modern.min.js"></script>
+	</head>
+
+	<body class="page-header-fixed page-horizontal-bar small-sidebar">
+		<!--[if lt IE 9]>
+			<div id="oldie">
+				<p>Su navegador es incompatible con esta aplicación. Debe utilizar una versión más moderna.</p>
+			</div>
+		<![endif]-->
+		<div class="overlay"></div>
+
+		<main id="top" class="page-content content-wrap">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="sidebar-pusher">
+						<a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+							<i class="fa fa-bars"></i>
+						</a>
+					</div><!-- / sidebar-pusher -->
+
+					<div class="logo-box">
+						<a href="escritorio.html" class="logo-text"><span>Softalnd</span></a>
+					</div><!-- / Logo Box -->
+
+					<div class="topmenu-outer">
+						<div class="top-menu">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown" sar-user-data>
+									<a class="dropdown-toggle waves-effect waves-button waves-classic">
+										<span class="user-name">{{ user.username }}</span>
+										<img class="img-circle avatar" ng-src="{{ getAvatar() }}" width="40" height="40" alt="">
+									</a>
+								</li>
+								<!--
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+										<span class="user-name">Nombre de Usuario<i class="fa fa-angle-down"></i></span>
+										<img class="img-circle avatar" src="assets/images/avatar3.png" width="40" height="40" alt="">
+									</a>
+									<ul class="dropdown-menu dropdown-list" role="menu">
+										<li role="presentation"><a href="contactos"><i class="fa fa-user"></i>Contactos</a></li>
+										<li role="presentation"><a href="#"><i class="fa fa-cog"></i>Cambiar contraseña</a></li>
+										<li role="presentation"><a href="cerrar-sesion"><i class="fa fa-sign-out m-r-xs"></i>Salir</a></li>
+									</ul>
+								</li>
+								-->
+								<li>
+									<a href="salir" class="log-out waves-effect waves-button waves-classic">
+										<span><i class="fa fa-sign-out m-r-xs"></i>Salir</span>
+									</a>
+								</li>
+							</ul>
+							<!-- / Nav -->
+						</div>
+						<!-- / Top Menu -->
+					</div>
+					<!-- / topmenu-outer -->
+				</div>
+				<!-- / navbar-inner -->
+			</div>
+			<!-- / Navbar -->
+
+			<div class="horizontal-bar sidebar">
+				<sar-menu></sar-menu>
+			</div><!-- Page Sidebar -->
+
+      <div class="page-inner">
+<!-- 				<div class="page-title">
+					<h3>Habilitación de Licencias</h3>
+					<div class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li><a href="#escritorio">Inicio</a></li>
+							<li class="active">Licencias</li>
+						</ol>
+					</div>
+				</div> -->
+				<sar-title></sar-title>
+
+        <div id="main-wrapper">
+        	<div class="row">
+
+        		<div class="col-lg-9 col-md-12" ng-view></div>
+        		<!-- / ng-view -->
+
+						<div class="col-lg-3 col-md-12">
+							<div id="id-cliente" class="panel panel-white" style="height: 100%;" sar-user-data>
+								<div class="panel-heading">
+									<h4 class="panel-title">{{ user.company }}</h4>
+									<div class="panel-control">
+										<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Expandir/Colapsar" class="panel-collapse">
+											<i class="icon-arrow-down"></i>
+										</a>
+									</div>
+								</div>
+								<div class="panel-body">
+									<img ng-src="{{ getLogo() }}"
+										alt="Nombre del Cliente"
+										class="logo-cliente" />
+									<hr />
+									<p><strong>Último acceso: </strong>{{ user.lastLogin | date: 'dd/MM/yyyy' }}</p>
+								</div>
+							</div>
+							<!-- / #id-cliente -->
+
+							<div class="panel panel-white" style="height: 100%;">
+								<div id="novedades" class="panel-heading">
+									<h4 class="panel-title">Novedades</h4>
+									<div class="panel-control">
+										<a href="javascript:void(0);"
+											data-toggle="tooltip"
+											data-placement="top"
+											title="Expandir/Colapsar"
+											class="panel-collapse"><i class="icon-arrow-down"></i></a>
+									</div>
+								</div>
+								<sar-novedad index="1" source="news"></sar-novedad>
+							</div>
+
+							<div id="manuales-docs" class="panel panel-white">
+								<div class="panel-heading">
+									<h4 class="panel-title">Manuales y Documentación</h4>
+									<div class="panel-control">
+										<a href="javascript:void(0);"
+											data-toggle="tooltip"
+											data-placement="top"
+											title="Expandir/Colapsar"
+											class="panel-collapse">
+											<i class="icon-arrow-down"></i>
+										</a>
+									</div>
+								</div>
+								<sar-novedad index="2" source="documents"></sar-novedad>
+
+							</div>
+							<!-- / #manuales-docs -->
+
+						</div>
+						<!-- / .col-lg-3 col-md-12 -->
+
+					</div><!-- Main Wrapper -->
+
+				</div><!-- Page Inner -->
+
+				<div class="page-footer">
+					<p class="no-s">2016 &copy; Softland Argentina S.A.</p>
+				</div>
+				<!-- / .page-footer -->
+
+			</main><!-- Page Content -->
+
+	</body>
+</html>

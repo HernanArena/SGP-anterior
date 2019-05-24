@@ -1,0 +1,6 @@
+{
+    "url_api": "http://logic.softland.com.ar:3030",
+	"login_host": "logic.softland.com.ar",
+	"login_port": "3030",
+	"login_path": "/login"
+}

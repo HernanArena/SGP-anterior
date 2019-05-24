@@ -1,0 +1,17 @@
+[
+    {
+        "Titulo": "Documento 1",
+        "Descripcion": "Documento del documento 1",
+        "PATH": "/intercambio/file1.docx"
+    },
+    {
+        "Titulo": "Documento 2",
+        "Descripcion": "Documento del documento 2",
+        "PATH": "/intercambio/file2.csv"
+    },
+    {
+        "Titulo": "Documento 3",
+        "Descripcion": "Documento del documento 3",
+        "PATH": "http://www.lipsum.com/"
+    }
+]

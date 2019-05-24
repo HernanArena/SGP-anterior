@@ -1,0 +1,24 @@
+[
+    [
+        {
+            "codfor": "CL",
+            "nrofor": 4030,
+            "nrocta": "STIHL",
+            "nombre": "STIHL MOTOIMPLEMENTOS S.A",
+            "fchmov": "07/18/2011",
+            "userUltAct": "Cliente",
+            "estado": "005CLI",
+            "desest": "Esperando Accion del Cliente",
+            "versio": "2309",
+            "incide": "C",
+            "tincid": "Consulta",
+            "fchent": null,
+            "stfche": "No Aplica",
+            "resges": "CLIENTE",
+            "obscli": "01/09/2011 14:49:04 : Estimado Cliente , para el caso en particular que nos plante según los parámetros definidos en el Límite de crédito H975 al tener Cantidad de días (Mínimo) = 1, Si existe deuda mayor a este plazo, independientemente al monto, supera el límite de crédito.\r\nTenga en cuenta que Porcentaje (mínimo): Define el importe máximo que se puede tener en la cuenta corriente pendiente (vencida y no vencida) para poder realizar transacciones. Si el importe de la cuenta corriente supera el valor del porcentaje sobre el parámetro “Importe” supera el límite de crédito.\r\n ",
+            "desfun": "Aplicación Uso del límite de crédito en circuito facturación 002000-001000\r\n\r\nPregunta\r\n\tEn la parametrización del circuito 002000-001000 tildé la opción \"Límite de crédito - Para\". En el ABM de límites de crédito de ventas parametricé el límite H975 con la opción \"Trabaja con control de vencimientos\", \"Porcentaje mínimo\"=100 y \"Cantidad de días (mínimo)\"=1. Al cliente 0001 le asigné el límite H975. Cuando quiero sacar un plist a este cliente sale la leyenda \"Existe una deuda vencida de (44102.0948 - Pesos) para el límite de crédito\". La deuda está bien. ¿Pero si puse porcentaje mínimo=100 no debería parar si toda la deuda está vencida? Mando sta.",
+            "observ": "01/09/2011 14:49:04 NCORDO : Estimado Cliente , para el caso en particular que nos plante según los parámetros definidos en el Límite de crédito H975 al tener Cantidad de días (Mínimo) = 1, Si existe deuda mayor a este plazo, independientemente al monto, supera el límite de crédito.\r\nTenga en cuenta que Porcentaje (mínimo): Define el importe máximo que se puede tener en la cuenta corriente pendiente (vencida y no vencida) para poder realizar transacciones. Si el importe de la cuenta corriente supera el valor del porcentaje sobre el parámetro “Importe” supera el límite de crédito.\r\n",
+            "epcndi": null
+        }
+    ]
+]

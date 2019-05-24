@@ -1,0 +1,138 @@
+<div id="habilitacion-licencias" class="panel panel-white">
+	<div class="panel-heading">
+		<span id="icono-seccion" class="menu-icon glyphicon glyphicon-registration-mark"></span>
+		<h4 class="panel-title">Licencias</h4>
+	</div>
+
+	<div class="panel-body">
+		<div id="alertContainer"></div>
+
+		<form id="license" name="formLicencia" ng-submit="licencias.submit()">
+			<div class="row">
+
+				<div class="form-group col-md-6">
+					<input
+						id="InputEmail"
+						type="email"
+						class="form-control"
+						name="InputEmail"
+						ng-class="{ 'has-error': formLicencia.InputEmail.$invalid && formLicencia.InputEmail.$dirty }"
+						ng-model="licencia.direml"
+						placeholder="Ingrese Dirección email"
+						required>
+					<!--  -->
+<!-- 					<div ng-if="formLicencia.InputEmail.$dirty" ng-messages="formLicencia.InputEmail.$error" role="alert">
+						<label ng-show="formLicencia.InputEmail.$error.required" class="error">Este campo es obligatorio.</label>
+						<label ng-show="formLicencia.InputEmail.$error.email" class="error">Debe ingresar un email valido.</label>
+					</div> -->
+				</div>
+
+				<div class="form-group col-md-6">
+					<select
+						id="tiphab"
+						name="tiphab"
+						class="form-control"
+						ng-class="{ 'has-error': formLicencia.tiphab.$invalid && formLicencia.tiphab.$dirty }"
+						ng-model="licencia.tiphab"
+						ng-options="v.CODIGO as v.DESCRP for v in tipos"
+						required
+						>
+						<option value="">Seleccione Tipo de Habilitación…</option>
+					</select>
+					<!--  -->
+<!-- 					<div ng-show="formLicencia.$submitted || formLicencia.tiphab.$touched" role="alert">
+						<label ng-show="formLicencia.tiphab.$error.required" class="error">Seleccione una opción.</label>
+					</div> -->
+				</div>
+
+				<div id="novedades-form" class="form-group col-md-12">
+					<select
+						id="noveda"
+						name="noveda"
+						class="form-control"
+						ng-class="{ 'has-error': formLicencia.noveda.$invalid && formLicencia.noveda.$dirty }"
+						ng-model="licencia.noveda"
+						ng-options="v.CODIGO as v.DESCRP for v in novedades"
+						ng-disabled="licencia.tiphab !== 'NO'"
+						>
+						<option value="">{{ licencia.tiphab === 'NO' ? 'Seleccione una opción…' : '--' }}</option>
+					</select>
+					<!--  -->
+<!-- 					<div ng-show="formLicencia.$submitted || formLicencia.noveda.$touched" role="alert">
+						<label ng-show="formLicencia.noveda.$error.required" class="error">Seleccione una opción.</label>
+					</div> -->
+				</div>
+
+				<div class="form-group col-md-12">
+					<textarea id="descrp"
+						name="descrp"
+						rows="8"
+						class="form-control"
+						ng-class="{ 'has-error': formLicencia.descrp.$invalid && formLicencia.descrp.$dirty }"
+						ng-model="licencia.observ"
+						placeholder="Descripción/Motivo"
+						required></textarea>
+					<!--  -->
+<!-- 					<div ng-if="formLicencia.descrp.$dirty" ng-messages="formLicencia.descrp.$error" role="alert">
+						<label ng-show="formLicencia.descrp.$error.required" class="error">Este campo es obligatorio.</label>
+					</div> -->
+				</div>
+
+			<div class="form-group">
+				<div class="col-md-12">
+					<label class="btn btn-success btn-addon m-b-sm btn-lg" ng-disabled="attach.file.length" for="fileattach">
+						<i class="fa fa-upload"></i> Subir archivo
+						<input
+							id="fileattach"
+							name="fileattach[]"
+							fileread="attach.file"
+							type="file"
+							ng-disabled="attach.file.length"
+							ng-hide="true" />
+					</label>
+
+					<button
+						type="submit"
+						id="btn-submit-license"
+						ng-disabled="!isValid"
+						class="btn btn-success btn-addon m-b-sm btn-lg pull-right"><i class="fa fa-check"></i> Enviar</button>
+
+				<!-- / .col-sm-12 -->
+			</div>
+			<!-- / .form-group -->
+
+				<div class="col-md-12">
+					<div class="message-attachments" ng-show="attach.file.length">
+						<div class="message-attachment" ng-repeat="file in attach.file">
+							<div class="attachment-info">
+								<p>
+									<i class="fa fa-paperclip m-r-xs"></i> {{ file.name }} <br>
+									<sar-filesize size="{{ file.size }}"></sar-filesize>
+								</p>
+								<p ng-show="canDeleteFile">
+									<button type="button" class="attachDelete" ng-click="licencias.deleteAttach($index)">
+										<i class="fa fa-close"></i> Eliminar
+									</button>
+								</p>
+
+								<progress
+									ng-model="fileAttachProgress[ file.progressId ]"
+									ng-show="fileAttachProgress[ file.progressId ]"
+									value="{{ fileAttachProgress[ file.progressId ] }}"
+									min="0"
+									max="100" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- / .col-md-12 -->
+			</div>
+			<!-- / .row -->
+		</form>
+		<!-- / #license -->
+
+	</div>
+	<!-- / .panel-body -->
+
+</div>
+<!-- / #habilitacion-licencias -->

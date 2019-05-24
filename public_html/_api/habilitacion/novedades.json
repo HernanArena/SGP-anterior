@@ -1,0 +1,38 @@
+[
+    {
+        "CODIGO": "LGL004",
+        "DESCRP": "C.O.T. (automático)"
+    },
+    {
+        "CODIGO": "LGL003",
+        "DESCRP": "Factura electrónica"
+    },
+    {
+        "CODIGO": "SQL11",
+        "DESCRP": "Microsoft SQL Server 2012"
+    },
+    {
+        "CODIGO": "SQL12",
+        "DESCRP": "Microsoft SQL Server 2014"
+    },
+    {
+        "CODIGO": "WIN10",
+        "DESCRP": "Microsoft Windows 10-Compatible con Softland3.2 o superior"
+    },
+    {
+        "CODIGO": "WIN8",
+        "DESCRP": "Microsoft Windows 8/2012-Compatible con Softland3.1 o super."
+    },
+    {
+        "CODIGO": "LGL007",
+        "DESCRP": "RG AFIP Nº 3685 - CITI Compras y CITI Ventas"
+    },
+    {
+        "CODIGO": "V30300",
+        "DESCRP": "Versión 3.3"
+    },
+    {
+        "CODIGO": "V30400",
+        "DESCRP": "Versión 3.4"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "ESTADO": "005CLI",
+        "LABEL": "Acción del cliente"
+    },
+    {
+        "ESTADO": "050",
+        "LABEL": "Resulta"
+    }
+]

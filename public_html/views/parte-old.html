@@ -1,0 +1,219 @@
+
+<div id="cambio-estado" class="panel panel-white">
+	<div class="panel-heading">
+		<a href="#partes">
+			<span id="icono-seccion" class="menu-icon glyphicon glyphicon-arrow-left"><span class="ayuda-accion">Volver</span></span>
+		</a>
+		<h4 class="panel-title">Parte: <span>{{ parte.codfor }}{{ parte.nrofor }}</span> | <span>{{ parte.mensaje }}</span></h4>
+	</div>
+
+	<div class="panel-body">
+
+		<div ng-show="parte.estado ===  '005CLI'" class="alert alert-warning alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span></button>
+				<i class="fa fa-warning"></i>
+				<strong>Estimado Cliente:</strong> este Parte requiere una acción de su parte. Por favor lea detenidamente nuestra respuesta.
+		</div>
+		<!-- / .alert -->
+
+		<table id="detalleParte" class="table table-striped">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Fecha</th>
+					<th style="width:50%;">Descripción</th>
+					<th style="text-align:center;">Última actualización</th>
+				</tr>
+			</thead>
+
+			<tbody ng-repeat="(key, historia) in parte.historial">
+				<tr class="row-collapse" data-toggle="collapse" ng-href="#{{ 'collapse' + key }}" aria-expanded="true">
+					<td class="accordion-toggle"></td>
+					<td scope="row">{{ historia.fecha_creacion | date:'dd/MM/yy' }}</td>
+					<td>{{ historia.mensaje | limitTo:100 }}{{ historia.mensaje.length > 100 ? '...' : '' }}</td>
+					<td align="center">
+	          <img ng-src="assets/images/{{ historial.usuario.usuario_avatar }}"
+	              class="img-circle"
+	              alt="{{ historial.usuario.usuario_nombre }}">
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="4" id="collapse-cell">
+						<div id="{{ 'collapse' + key }}" ng-class="!key ? 'collapse in' : 'collapse'">
+							<div class="panel-body-accordion">
+								<div class="message-sender" ng-class="historia.usuario.usuario_id === 0 ? 'soporte' : 'cliente'">
+									<span ng-class="'label label-' + (historia.usuario.usuario_id === 0 ? 'primary' : 'info')">{{ historia.usuario.usuario_nombre }}</span>
+								</div>
+								<!-- / .message-sender -->
+
+								<div class="message-content" ng-class="historia.usuario.usuario_id === 0 ? 'soporte' : 'cliente'">
+									<p>{{ historia.mensaje }}</p>
+								</div>
+								<!-- / .message-content -->
+
+								<sar-attachment files="historia.adjuntos"></sar-attachment>
+								<!-- / .message-attachments -->
+
+								<div ng-show="key === 0 && historia.acciones.length" sar-collapse>
+									<nav>
+										<ul class="list-inline">
+											<li>
+												<button
+													type="button"
+													id="btn-response"
+													class="btn btn-success btn-addon m-b-sm btn-lg"
+													sar-toggle="collapse"
+													sar-target="#response"><i ng-class="{ 'fa': true, 'fa-reply': (open !== '#response'), 'fa-close': (open === '#response')
+													}"></i> Responder</button>
+											</li>
+											<li>
+												<button
+													type="button"
+													id="btn-close"
+													class="btn btn-success btn-addon m-b-sm btn-lg"
+													sar-toggle="collapse"
+													sar-target="#close"><i ng-class="{ 'fa': true, 'fa-close': (open !== '#close'), 'fa-check': (open === '#close')
+													}"></i> Cerrar Parte</button>
+											</li>
+										</ul>
+									</nav>
+									<!-- / nav -->
+
+									<div id="close" class="collapse">
+										<form method="post" id="formCloseTicket" name="formCloseTicket" class="form-horizontal" ng-submit="closeTicket()" novalidate>
+											<div class="form-group">
+												<div class="col-md-12 col-sm-12">
+													<textarea name="description" rows="8" class="form-control" placeholder="Comentario" ng-model="dataticket.description" required></textarea>
+													<div ng-if="formCloseTicket.description.$dirty" ng-messages="formCloseTicket.description.$error" role="alert">
+														<label ng-show="formCloseTicket.description.$error.required" class="error">Este campo es obligatorio.</label>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<label for="ratio">Por favor haga clic para calificar el servicio de <strong>Soporte</strong> recibido:</label>
+													<input name="ratio" id="valoracion" class="rating rating-loading" ng-model="dataticket.ratio" data-min="0" data-max="5" data-step="1" data-size="xs">
+												</div>
+												<div class="col-sm-6">
+													<button
+														type="submit"
+														ng-disabled="!formCloseTicket.$valid"
+														id="btn-close-ticket"
+														class="btn btn-success btn-addon m-b-sm btn-lg pull-right">
+														<i class="fa fa-check"></i> Cerrar Parte
+													</button>
+												</div>
+											</div>
+										</form>
+									</div>
+									<!-- / #close -->
+
+									<div id="response" class="collapse">
+										<form id="answer-new-ticket" name="formAnswerNewTicket" class="form-horizontal" ng-submit="sendAnswer()" novalidate>
+											<div class="form-group">
+												<div class="col-md-12 col-sm-12">
+													<textarea
+														name="description"
+														id="ticket-answer-textarea"
+														rows="8"
+														class="form-control"
+														placeholder="Escribir una respuesta"
+														ng-model="dataanswer.description"
+														required></textarea>
+													<div ng-if="formAnswerNewTicket.description.$dirty" ng-messages="formAnswerNewTicket.description.$error" role="alert">
+														<label ng-show="formAnswerNewTicket.description.$error.required" class="error">Este campo es obligatorio.</label>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-12">
+													<a href="javascript:void(0);" data-toggle="collapse" data-target="#attach" class="btn btn-success btn-addon m-b-sm btn-lg">
+														<i class="fa fa-paperclip"></i> Adjuntar archivo
+													</a>
+													<button
+														type="submit"
+														ng-disabled="!formAnswerNewTicket.$valid"
+														id="btn-submit-ticket"
+														class="btn btn-success btn-addon m-b-sm btn-lg pull-right">
+														<i class="fa fa-check"></i> Enviar Parte
+													</button>
+
+													<div class="message-attachments">
+	<!-- 													<h4>Archivos Adjuntos (Máximo 3 Archivos):</h4>
+															<p><i class="fa fa-paperclip m-r-xs"></i>1 Adjunto - <a href="#">Descargar <i class="fa fa-download"></i></a> | <a href="#">Eliminar <i class="fa fa-close"></i></a></p>
+														<div class="message-attachment">
+															<a href="assets/images/Captura1.jpg" class="lightbox">
+																<div class="attachment-info">
+																	<p>backup_120316.sql</p>
+																	<span>12.129.444 KB</span>
+																</div>
+															</a>
+														</div> -->
+													</div>
+													<!-- / .message-attachments -->
+												</div>
+											</div>
+
+										<div id="attach" class="collapse">
+											<div class="alert alert-warning alert-dismissible" role="alert">
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												Seleccione un archivo de la lista o adjunte uno nuevo desde su computadora.
+											</div>
+											<div id="upload">
+												<form action="/file-upload" class="dropzone">
+													<div class="fallback">
+														<input name="file" ng-model="dataanswer.files" type="file" multiple />
+													</div>
+												</form>
+											</div>
+											<div id="checkTree">
+												<ul>
+													<li data-jstree='{"opened":true}'>CL 3989
+														<ul>
+															<li data-jstree='{"selected":true,"type":"file","icon":"fa fa-database"}'>backup_120316.sql</li>
+															<li data-jstree='{"type":"file"}'>Archivo_debuug.txt</li>
+															<li data-jstree='{"type":"file","icon":"fa fa-file-code-o"}'>error_log.log</li>
+															<li data-jstree='{"type":"file","icon":"fa fa-database"}'>backup.sql</li>
+															<li data-jstree='{"type":"file"}'>Archivo_debuug.txt</li>
+															<li data-jstree='{"type":"file","icon":"fa fa-file-code-o"}'>error_log.log</li>
+														</ul>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- / #attach -->
+										</form>
+									</div>
+									<!-- / #response -->
+
+								</div>
+
+							</div>
+							<!-- / .panel-body-accordion -->
+						</div>
+						<!-- / #collapse + key -->
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+				<th colspan="4"></th>
+				</tr>
+			</tfoot>
+		</table>
+		<!-- / table -->
+
+		<nav>
+			<ul class="list-inline">
+				<li><a href="#partes" class="btn btn-success btn-addon m-b-sm btn-lg">
+					<i class="fa fa-search"></i> Ver todos los Partes</a>
+				</li>
+			</ul>
+		</nav>
+
+	</div>
+</div>

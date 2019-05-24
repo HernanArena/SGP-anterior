@@ -1,0 +1,24 @@
+[
+    [
+        {
+            "codfor": "AP",
+            "nrofor": 36,
+            "nrocta": "LONDON",
+            "nombre": "LONDON SUPPLY S.A.",
+            "fchmov": "01/27/2016",
+            "userUltAct": "Servicio al Cliente (Federico Lopez Figueredo)",
+            "estado": "000",
+            "desest": "Ingresado",
+            "versio": "3105",
+            "incide": "C",
+            "tincid": "Consulta",
+            "fchent": null,
+            "stfche": "No Aplica",
+            "resges": "SOFTLAND (SOP)",
+            "obscli": null,
+            "desfun": "De: Luis Serwatka <lserwatka@londonsupply.net>\r\nFecha: 27 de enero de 2016, 10:36\r\nAsunto: Consulta - CMD - Asiento de Costo de la Mercadería Vendida\r\nPara: soportear@softland.com.ar\r\n\r\n\r\nEstimados, Buenos días.\r\nQuisieramos saber si existe la posibilidad de parametrizar la forma en que el sistema de gestión contabiliza, de manera estándar, el Costo de la Mercadería Vendida de una venta, de manera simultánea con esta (Stock en línea).\r\n \r\nEs decir que, para cada factura de venta, se genere el asiento contable:\r\nDeudores por Ventas\r\na Venta Mercado Doméstico\r\n \r\nY, para cada remito de egreso (salida de mercadería vendida), se genere el asiento:\r\nCosto de la Mercadería Vendida\r\na Mercaderías\r\n \r\nMuchas gracias,",
+            "observ": null,
+            "epcndi": null
+        }
+    ]
+]

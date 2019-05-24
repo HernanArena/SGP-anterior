@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+	<head>
+
+		<!-- Title -->
+		<title>Softland | Extranet - Servicios al Cliente</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Softland, Extranet de servicios al cliente." />
+		<meta name="keywords" content="softalnd, soporte" />
+		<meta name="author" content="Softland" />
+
+		<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+
+		<!-- Styles -->
+		<!-- <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
+
+		<!-- Theme Styles -->
+		<link href="assets/css/assets.css" rel="stylesheet" type="text/css"/>
+		<link href="assets/css/sar.css" rel="stylesheet" type="text/css"/>
+
+		<script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
+		<script src="assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Javascripts -->
+		<script src="config.js"></script>
+		<script src="assets/js/modern.min.js"></script>
+
+	</head>
+	<body class="page-header-fixed page-horizontal-bar small-sidebar">
+		<!--[if lt IE 9]>
+			<div id="oldie">
+				<p>Su navegador es incompatible con esta aplicación. Debe utilizar una versión más moderna.</p>
+			</div>
+		<![endif]-->
+		<div class="overlay"></div>
+
+		<main class="page-content content-wrap" ng-controller="LoginController as login">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="logo-box">
+						<a href="index.html" class="logo-text"><span>Softalnd</span></a>
+					</div><!-- Logo Box -->
+
+					<div class="topmenu-outer">
+						<div class="top-menu">
+					</div><!-- Top Menu -->
+					</div>
+				</div>
+			</div><!-- Navbar -->
+
+			<div class="page-inner" style="background:#ECECEC; !important">
+				<div id="main-wrapper" style="margin:0; padding:0;">
+
+					<div class="container-fluid">
+						<div class="row">
+						  <form name="formLogin" ng-submit="login.submit()" novalidate>
+
+								<div class="col-lg-12 v-center login-top">
+									<h1 class="login-heading hidden-xs">{{ showForgot ? '¿Olvidó su contraseña?' : 'Login - Acceder al sistema' }}</h1>
+									<h1 class="login-heading-mobile visible-xs">{{ showForgot ? '¿Olvidó su contraseña?' : 'Acceder al sistema' }}</h1>
+
+									<div class="mobile-form visible-xs center" ng-show="!showForgot">
+										<div class="form-group">
+											<input type="text" name="user" class="form-control" placeholder="Usuario" ng-model="user.uid" required>
+											<div ng-if="formLogin.user.$dirty" ng-cloak ng-messages="formLogin.user.$error" role="alert">
+													<label ng-show="formLogin.user.$error.required" class="error">Este campo es obligatorio.</label>
+											</div>
+										</div>
+										<!--  -->
+										<div class="form-group">
+											<input type="password" name="password" class="form-control" placeholder="Contraseña" ng-model="user.pwd" required>
+												<div ng-if="formLogin.password.$dirty" ng-cloak ng-messages="formLogin.password.$error" role="alert">
+													<label ng-show="formLogin.password.$error.required" class="error">Este campo es obligatorio.</label>
+												</div>
+										</div>
+										<!--  -->
+										<div class="form-group">
+											<button
+												type="submit"
+												ng-disabled="!isValid"
+												id="log-in"
+												class="btn btn-success btn-block"
+											>Acceder</button>
+												<label ng-show="loginFault" class="error" role="alert">{{ errorMessage }}</label>
+										</div>
+									</div>
+									<!-- / #login  -->
+
+									<div class="mobile-form visible-xs center" ng-show="showForgot">
+										<div class="form-group">
+											<input type="text" name="user" class="form-control" placeholder="Usuario" ng-model="user.uid" required />
+											<div ng-if="formLogin.user.$dirty" ng-cloak ng-messages="formLogin.user.$error" role="alert">
+												<label ng-show="formLogin.user.$error.required" class="error">Este campo es obligatorio.</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<button
+												id="log-in"
+												type="button"
+												ng-disabled="!user.uid"
+												ng-click="login.sendPassword()"
+												class="btn btn-success btn-block btn-forgot">Recuperar contraseña</button>
+										</div>
+										<label ng-show="forgotMessage" ng-class="fogotClass">{{ forgotMessage }}</label>
+									</div>
+									<!-- / #forgot -->
+
+								</div>
+
+								<div class="col-lg-7 col-md-7 col-sm-6 v-center hidden-xs">
+									<div class="content hidden-xs">
+
+										<div id="login" class="form-inline" ng-show="!showForgot">
+											<div class="form-group">
+												<input type="text" name="user" class="form-control" placeholder="Usuario" ng-model="user.uid" required>
+												<div ng-if="formLogin.user.$dirty" ng-cloak ng-messages="formLogin.user.$error" role="alert">
+													<label ng-show="formLogin.user.$error.required" class="error">Este campo es obligatorio.</label>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<input type="password" name="password" class="form-control" placeholder="Contraseña" ng-model="user.pwd" required>
+												<div ng-if="formLogin.password.$dirty" ng-cloak ng-messages="formLogin.password.$error" role="alert">
+													<label ng-show="formLogin.password.$error.required" class="error">Este campo es obligatorio.</label>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<button
+													type="submit"
+													ng-disabled="!isValid"
+													id="log-in"
+													class="btn btn-success btn-block"
+												>Acceder</button>
+												<label ng-show="loginFault" class="error" role="alert">{{ errorMessage }}</label>
+											</div>
+										</div>
+										<!-- / #login -->
+
+										<div id="login" class="form-inline" ng-show="showForgot">
+											<div class="form-group">
+												<input type="text" name="recover" class="form-control" placeholder="Usuario" ng-model="user.uid" required />
+												<div ng-if="formLogin.recover.$dirty" ng-cloak ng-messages="formLogin.recover.$error" role="alert">
+													<label ng-show="formLogin.recover.$error.required" class="error">Este campo es obligatorio.</label>
+												</div>
+											</div>
+											<div class="form-group">
+												<button
+													id="log-in"
+													type="button"
+													ng-disabled="!user.uid"
+													ng-click="login.sendPassword()"
+													class="btn btn-success btn-block btn-forgot">Recuperar contraseña</button>
+											</div>
+											<label ng-show="forgotMessage" ng-class="fogotClass">{{ forgotMessage }}</label>
+										</div>
+										<!-- / #forgot -->
+
+									</div>
+									<!-- / .content -->
+								</div>
+								<!-- / .col-lg-7 -->
+
+								<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 img-container">
+									<div class="login-image"></div>
+								</div>
+								<!-- / .img-container -->
+							</form>
+					  </div>
+					  <!-- / .row -->
+					</div>
+					<!-- / .container-fluid -->
+
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- <p ng-show="loginFault" class="loginerror" role="alert">{{ errorMessage }}</p> -->
+								<!-- <a href="" ng-click="login.toogleForgot()" class="forgot m-t-md text-sm">{{ showForgotLabel() }}</a> -->
+							</div>
+						</div>
+					</div>
+					<!-- / .container-fluid -->
+				</div>
+				<!-- Main Wrapper -->
+
+				<div class="page-footer">
+					<div class="footer-wrapper">
+						<p class="no-s">2016 &copy; Softland Argentina S.A.</p>
+						<p class="no-s"><a href="http://logic.softland.com.ar:8081">Acceso al Sitio de Canales</a></p>
+					</div>
+				</div>
+			</div>
+			<!-- Page Inner -->
+		</main>
+
+
+	</body>
+</html>
