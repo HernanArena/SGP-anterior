@@ -23,7 +23,7 @@
     "angular-resource": "^1.5.0",
     "angular-route": "^1.5.0",
     "cookie-parser": "^1.4.1",
-    "express": "^4.13.4",
+    "express": "^4.18.2",
     "express-session": "^1.13.0",
     "mongoose": "^4.4.4",
     "socket.io": "^1.4.5",
@@ -34,7 +34,7 @@
     "angular-datatables": "^0.5.3",
     "angular-jwt": "0.0.9",
     "angular-ui-router": "^0.2.18",
-    "body-parser": "^1.15.0",
+    "body-parser": "^1.20.1",
     "grunt": "~0.4.5",
     "grunt-concurrent": "^2.2.1",
     "grunt-contrib-concat": "^0.5.1",
@@ -42,7 +42,7 @@
     "grunt-contrib-cssmin": "~0.14.0",
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-uglify": "^0.9.1",
-    "grunt-contrib-watch": "~0.6.0",
+    "grunt-contrib-watch": "~1.1.0",
     "grunt-nodemon": "^0.4.1",
     "multer": "^1.1.0"
   }
